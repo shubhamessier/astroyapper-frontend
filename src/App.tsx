@@ -10,9 +10,9 @@ import {
   Sparkles,
 } from "lucide-react";
 import confetti from "canvas-confetti";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Button } from "./components/ui/button";
+import { Separator } from "./components/ui/separator";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "./components/ui/tabs";
 import About from "./pages/About";
 import { supabase } from "./lib/supabase";
 
@@ -74,7 +74,7 @@ function App() {
       triggerConfetti();
       setEmail("");
       setTimeout(() => setIsSubmitted(false), 3000);
-    } catch (err) {
+    } catch {
       setError("Something went wrong. Please try again.");
     }
   };
