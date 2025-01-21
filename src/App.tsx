@@ -151,7 +151,7 @@ function App() {
       </header>
 
       {/* Hero Section */}
-      <section className="pt-40 pb-20">
+      <section className="pt-60 pb-20">
         <div className="container max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-16">
             <div className="space-y-6">
