@@ -200,14 +200,6 @@ function About({ onBack }: AboutProps) {
               >
                 <Instagram className="h-5 w-5" />
               </a>
-              <a
-                href="https://github.com/astroyapper"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-600 hover:text-rose-400 transition-colors p-2"
-              >
-                <Github className="h-5 w-5" />
-              </a>
             </div>
             <Separator className="mb-6" />
             <p className="text-center text-gray-500 text-sm">
