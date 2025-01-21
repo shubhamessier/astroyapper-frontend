@@ -2,17 +2,22 @@ import React, { useState } from "react";
 import {
   ChevronRight,
   Mail,
-  Github,
   Twitter,
   Instagram,
   Star,
-  Users,
-  Sparkles,
+  Moon,
+  Sun,
+  Heart,
 } from "lucide-react";
 import confetti from "canvas-confetti";
-import { Button } from "./components/ui/button";
-import { Separator } from "./components/ui/separator";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "./components/ui/tabs";
+import { Button } from "../src/components/ui/button";
+import { Separator } from "../src/components/ui/seprator";
+import {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+} from "../src/components/ui/tabs";
 import About from "./pages/About";
 import { supabase } from "./lib/supabase";
 
@@ -74,20 +79,60 @@ function App() {
       triggerConfetti();
       setEmail("");
       setTimeout(() => setIsSubmitted(false), 3000);
-    } catch {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (err) {
       setError("Something went wrong. Please try again.");
     }
   };
+
+  const features = [
+    {
+      id: "daily",
+      icon: Sun,
+      title: "Daily Astrological Guidance",
+      description:
+        "Receive personalized daily horoscopes and cosmic insights tailored to your birth chart and current planetary positions. Our advanced algorithms combine traditional wisdom with modern astronomical data.",
+      details: [
+        "Personalized daily horoscopes",
+        "Planetary transit interpretations",
+        "Lucky hours and favorable times",
+      ],
+    },
+    {
+      id: "personal",
+      icon: Moon,
+      title: "Detailed Birth Charts",
+      description:
+        "Generate comprehensive birth charts with detailed interpretations of planetary positions and aspects. Understand your unique cosmic blueprint and life path through interactive visualizations.",
+      details: [
+        "Interactive chart visualization",
+        "Detailed aspect analysis",
+        "Progressive forecasting",
+      ],
+    },
+    {
+      id: "community",
+      icon: Heart,
+      title: "Connect with Others",
+      description:
+        "Join a vibrant community of astrology enthusiasts. Share experiences, participate in discussions, and learn from others on similar cosmic journeys. Access exclusive events and workshops.",
+      details: [
+        "Live astrology workshops",
+        "Private study groups",
+        "Expert consultations",
+      ],
+    },
+  ];
 
   if (showAbout) {
     return <About onBack={() => setShowAbout(false)} />;
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-rose-50/50 to-indigo-50/50">
+    <div className="min-h-screen">
       {/* Header */}
       <header className="fixed w-full bg-white/95 backdrop-blur-sm z-50 border-b border-rose-100 shadow-sm">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
               <span className="text-2xl font-sans tracking-[-0.05em] text-gray-900">
@@ -106,8 +151,8 @@ function App() {
       </header>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto pt-20">
+      <section className="pt-40 pb-20">
+        <div className="container max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-16">
             <div className="space-y-6">
               <h1 className="font-sans text-5xl sm:text-6xl md:text-7xl text-gray-900 leading-[1.1] tracking-[-0.05em]">
@@ -150,13 +195,12 @@ function App() {
               )}
             </div>
 
-            <div className="max-w-2xl mx-auto bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-sm border border-rose-100">
+            <div className="max-w-2xl mx-auto glass-card rounded-2xl p-8">
               <p className="text-lg text-gray-600 leading-relaxed">
-                Astroyapper is your friendly neighbourhood astrologer, designed
-                for genZ and millennials who are curious about astrology and
-                want to explore their cosmic journey. We provide personalized
-                daily horoscopes, detailed birth charts, and a community of
-                astrology enthusiasts to connect with.
+                Designed with intention, our platform combines vintage
+                typography with modern aesthetics. The PP Editorial New typeface
+                brings timeless elegance, while soft pastel hues create a serene
+                atmosphere for your cosmic journey.
               </p>
             </div>
           </div>
@@ -164,13 +208,13 @@ function App() {
       </section>
 
       {/* Features Section */}
-      <section className="py-24 bg-white/40">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-24">
+        <div className="container max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="font-sans text-4xl md:text-5xl text-gray-900 mb-6 tracking-[-0.05em]">
+            <h2 className="font-sans text-3xl sm:text-4xl md:text-5xl text-gray-900 mb-6 tracking-[-0.05em]">
               Explore Our Features
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
               Discover the tools and insights that will guide your astrological
               journey.
             </p>
@@ -178,61 +222,46 @@ function App() {
 
           <div>
             <Tabs defaultValue="daily" className="w-full">
-              <TabsList className="grid w-full grid-cols-3 max-w-md mx-auto">
-                <TabsTrigger value="daily">Daily Insights</TabsTrigger>
-                <TabsTrigger value="personal">Personal Charts</TabsTrigger>
-                <TabsTrigger value="community">Community</TabsTrigger>
+              <TabsList className="grid w-full grid-cols-3 max-w-md mx-auto mb-8">
+                {features.map((feature) => (
+                  <TabsTrigger key={feature.id} value={feature.id}>
+                    {feature.title.split(" ")[0]}
+                  </TabsTrigger>
+                ))}
               </TabsList>
-              <TabsContent value="daily" className="mt-8">
-                <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-rose-100 shadow-sm">
-                  <div className="flex items-start space-x-6">
-                    <Star className="h-8 w-8 text-rose-400 mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-sans text-2xl mb-4 tracking-[-0.05em] text-gray-900">
-                        Daily Astrological Guidance
-                      </h3>
-                      <p className="text-gray-600 text-lg leading-relaxed">
-                        Receive personalized daily horoscopes and cosmic
-                        insights tailored to your birth chart and current
-                        planetary positions.
-                      </p>
+
+              {features.map((feature) => (
+                <TabsContent key={feature.id} value={feature.id}>
+                  <div className="feature-card group">
+                    <div className="flex flex-col lg:flex-row gap-8">
+                      <div className="flex-1 space-y-6">
+                        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
+                          <feature.icon className="feature-icon" />
+                          <div className="text-center sm:text-left">
+                            <h3 className="font-sans text-xl sm:text-2xl mb-4 tracking-[-0.05em] text-gray-900">
+                              {feature.title}
+                            </h3>
+                            <p className="text-gray-600 text-base sm:text-lg leading-relaxed">
+                              {feature.description}
+                            </p>
+                          </div>
+                        </div>
+                        <ul className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-primary/10">
+                          {feature.details.map((detail, index) => (
+                            <li
+                              key={index}
+                              className="flex items-center justify-center sm:justify-start gap-2"
+                            >
+                              <Star className="h-4 w-4 text-primary/60" />
+                              <span className="text-gray-600">{detail}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </TabsContent>
-              <TabsContent value="personal" className="mt-8">
-                <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-rose-100 shadow-sm">
-                  <div className="flex items-start space-x-6">
-                    <Sparkles className="h-8 w-8 text-rose-400 mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-sans text-2xl mb-4 tracking-[-0.05em] text-gray-900">
-                        Detailed Birth Charts
-                      </h3>
-                      <p className="text-gray-600 text-lg leading-relaxed">
-                        Generate comprehensive birth charts with detailed
-                        interpretations of planetary positions and aspects.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </TabsContent>
-              <TabsContent value="community" className="mt-8">
-                <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-rose-100 shadow-sm">
-                  <div className="flex items-start space-x-6">
-                    <Users className="h-8 w-8 text-rose-400 mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-sans text-2xl mb-4 tracking-[-0.05em] text-gray-900">
-                        Connect with Others
-                      </h3>
-                      <p className="text-gray-600 text-lg leading-relaxed">
-                        Join a community of astrology enthusiasts, share
-                        experiences, and learn from others on similar cosmic
-                        journeys.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </TabsContent>
+                </TabsContent>
+              ))}
             </Tabs>
           </div>
         </div>
@@ -240,7 +269,7 @@ function App() {
 
       {/* Footer */}
       <footer className="py-16 bg-white/40 border-t border-rose-100">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center justify-center space-y-8">
             <span className="text-2xl font-sans tracking-[-0.05em] text-gray-900">
               AstroYapper
@@ -268,14 +297,6 @@ function App() {
                   className="text-gray-600 hover:text-rose-400 transition-colors p-2"
                 >
                   <Instagram className="h-5 w-5" />
-                </a>
-                <a
-                  href="https://github.com/astroyapper"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-rose-400 transition-colors p-2"
-                >
-                  <Github className="h-5 w-5" />
                 </a>
               </div>
               <a
