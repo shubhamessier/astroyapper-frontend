@@ -139,7 +139,7 @@ function About({ onBack }: AboutProps) {
                       </Avatar>
                       <div>
                         <h3 className="font-sans text-xl tracking-[-0.05em] text-gray-900 mb-2">
-                          Somesh Tangde, Co-Founder
+                          Somesh, Co-Founder
                         </h3>
                         <p className="text-gray-600 text-sm leading-relaxed">
                           Professional Yapper, likes to yap a lot. Believes in
@@ -156,7 +156,7 @@ function About({ onBack }: AboutProps) {
                       </Avatar>
                       <div>
                         <h3 className="font-sans text-xl tracking-[-0.05em] text-gray-900 mb-2">
-                          Shubham Gaur, Co-Founder
+                          Shubham, Co-Founder
                         </h3>
                         <p className="text-gray-600 text-sm leading-relaxed">
                           Doesn't Yap much, but when he does, it's worth it.
