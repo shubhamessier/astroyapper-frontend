@@ -7,7 +7,6 @@ import {
   Mail,
   Twitter,
   Instagram,
-  Github,
 } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Separator } from "../components/ui/separator";
@@ -203,7 +202,7 @@ function About({ onBack }: AboutProps) {
             </div>
             <Separator className="mb-6" />
             <p className="text-center text-gray-500 text-sm">
-              &copy; 2024 AstroYapper. All rights reserved.
+              &copy; 2025 AstroYapper. All rights reserved.
             </p>
           </div>
         </div>

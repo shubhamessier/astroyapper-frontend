@@ -308,7 +308,7 @@ function App() {
             </div>
             <Separator className="my-6" />
             <p className="text-center text-gray-500 text-sm">
-              &copy; 2024 AstroYapper. All rights reserved.
+              &copy; 2025 AstroYapper. All rights reserved.
             </p>
           </div>
         </div>
