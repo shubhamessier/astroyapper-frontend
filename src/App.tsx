@@ -172,12 +172,13 @@ function App() {
               >
                 <input
                   type="email"
-                  placeholder="Enter your email to stay updated"
+                  placeholder="Enter your email here."
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="flex-1 px-6 h-14 rounded-full border border-rose-200 bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-rose-200 focus:border-transparent text-base shadow-sm"
+                  className="flex-1 px-6 h-14 rounded-full border border-rose-200 bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-rose-200 focus:border-transparent text-lg shadow-md"
                   required
                 />
+
                 <Button type="submit" size="lg" className="h-14">
                   Join Waitlist
                   <ChevronRight className="ml-2 h-5 w-5" />
