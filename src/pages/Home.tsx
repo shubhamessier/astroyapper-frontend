@@ -117,10 +117,6 @@ export function Home() {
             </p>
           )}
         </div>
-
-        <div className="max-w-2xl mx-auto glass-card rounded-2xl p-8">
-          <p className="text-lg text-gray-600 leading-relaxed">Astroyapper</p>
-        </div>
       </section>
 
       {/* Features Section */}
