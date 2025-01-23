@@ -28,7 +28,7 @@
 
   @font-face {
     font-family: "PP Editorial New";
-    src: url("../assets/fonts/PPEditorialNew-Italic-BF644b214fb0c0a.otf")
+    src: url("../src/assets/fonts/PPEditorialNew-Italic-BF644b214fb0c0a.otf")
       format("opentype");
     font-weight: 200;
     font-style: normal;
