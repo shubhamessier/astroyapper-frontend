@@ -77,7 +77,7 @@ export function Home() {
   return (
     <div className="space-y-24">
       {/* Hero Section */}
-      <section className="text-center space-y-16">
+      <section className="text-center space-y-20">
         <div className="space-y-6">
           <h1 className="font-sans text-5xl sm:text-6xl md:text-7xl text-gray-900 leading-[1.1] tracking-[-0.05em]">
             Your Personal Guide to the Cosmos
@@ -121,7 +121,7 @@ export function Home() {
 
       {/* Features Section */}
       <section>
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 mt-40">
           <h2 className="font-sans text-3xl sm:text-4xl md:text-5xl text-gray-900 mb-6 tracking-[-0.05em]">
             Explore Our Features
           </h2>
