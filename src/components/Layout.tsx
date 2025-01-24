@@ -5,6 +5,7 @@ import { Footer } from "./Footer";
 interface LayoutProps {
   children: ReactNode;
   onAboutClick?: () => void;
+  onChatClick?: () => void;
   showBackButton?: boolean;
   onBack?: () => void;
   title?: string;
@@ -13,6 +14,7 @@ interface LayoutProps {
 export function Layout({
   children,
   onAboutClick,
+  onChatClick,
   showBackButton,
   onBack,
   title,
@@ -21,6 +23,7 @@ export function Layout({
     <div className="min-h-screen bg-gradient-to-b from-rose-50/50 to-indigo-50/50">
       <Header
         onAboutClick={onAboutClick}
+        onChatClick={onChatClick}
         showBackButton={showBackButton}
         onBack={onBack}
         title={title}
