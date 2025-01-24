@@ -3,12 +3,19 @@ import { Button } from "./ui/button";
 
 interface HeaderProps {
   onAboutClick?: () => void;
+  onChatClick?: () => void;
   showBackButton?: boolean;
   onBack?: () => void;
   title?: string;
 }
 
-export function Header({ onAboutClick, showBackButton, onBack, title = "AstroYapper" }: HeaderProps) {
+export function Header({
+  onAboutClick,
+  onChatClick,
+  showBackButton,
+  onBack,
+  title = "AstroYapper"
+}: HeaderProps) {
   return (
     <header className="fixed w-full bg-white/95 backdrop-blur-sm z-50 border-b border-rose-100 shadow-sm">
       <div className="container max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -27,15 +34,26 @@ export function Header({ onAboutClick, showBackButton, onBack, title = "AstroYap
               {title}
             </span>
           </div>
-          {onAboutClick && (
-            <Button
-              variant="ghost"
-              onClick={onAboutClick}
-              className="text-gray-700"
-            >
-              About
-            </Button>
-          )}
+          <div className="flex gap-4">
+            {onChatClick && (
+              <Button
+                variant="ghost"
+                onClick={onChatClick}
+                className="text-gray-700"
+              >
+                Chat
+              </Button>
+            )}
+            {onAboutClick && (
+              <Button
+                variant="ghost"
+                onClick={onAboutClick}
+                className="text-gray-700"
+              >
+                About
+              </Button>
+            )}
+          </div>
         </div>
       </div>
     </header>

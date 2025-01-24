@@ -20,6 +20,101 @@ src/
 └── assets/            # Static assets (fonts, images)
 ```
 
+## Database Schema
+
+### Tables
+
+1. **Waitlist**
+   ```sql
+   CREATE TABLE waitlist (
+     id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+     email text UNIQUE NOT NULL,
+     created_at timestamptz DEFAULT now()
+   );
+   ```
+   - Purpose: Stores email addresses for the waitlist
+   - Security:
+     - Anyone can join the waitlist
+     - Only authenticated users can view the waitlist
+
+2. **Profiles**
+   ```sql
+   CREATE TABLE profiles (
+     id uuid PRIMARY KEY REFERENCES auth.users ON DELETE CASCADE,
+     full_name text,
+     date_of_birth date,
+     time_of_birth time,
+     timezone text,
+     place_of_birth text,
+     gender text,
+     relationship_status text,
+     created_at timestamptz DEFAULT now(),
+     updated_at timestamptz DEFAULT now()
+   );
+   ```
+   - Purpose: Stores user profile information including astrological data
+   - Relations: Connected to Supabase Auth users table
+   - Fields:
+     - `id`: Links to auth.users
+     - `full_name`: User's full name
+     - `date_of_birth`: Birth date for astrological calculations
+     - `time_of_birth`: Precise birth time for accurate charts
+     - `timezone`: Birth place timezone
+     - `place_of_birth`: Location for astrological calculations
+     - `gender`: User's gender identity
+     - `relationship_status`: Current relationship status
+
+### Row Level Security (RLS)
+
+#### Waitlist Table
+```sql
+-- Anyone can join waitlist
+CREATE POLICY "Anyone can join waitlist"
+  ON waitlist
+  FOR INSERT
+  TO public
+  WITH CHECK (true);
+
+-- Only authenticated users can view waitlist
+CREATE POLICY "Authenticated users can view waitlist"
+  ON waitlist
+  FOR SELECT
+  TO authenticated
+  USING (true);
+```
+
+#### Profiles Table
+```sql
+-- Users can read their own profile
+CREATE POLICY "Users can read own profile"
+  ON profiles
+  FOR SELECT
+  TO authenticated
+  USING (auth.uid() = id);
+
+-- Users can update their own profile
+CREATE POLICY "Users can update own profile"
+  ON profiles
+  FOR UPDATE
+  TO authenticated
+  USING (auth.uid() = id)
+  WITH CHECK (auth.uid() = id);
+
+-- Users can insert their own profile
+CREATE POLICY "Users can insert own profile"
+  ON profiles
+  FOR INSERT
+  TO authenticated
+  WITH CHECK (auth.uid() = id);
+```
+
+### Authentication
+
+- Uses Supabase Auth with Google OAuth
+- Email confirmation is disabled by default
+- Authentication flow uses PKCE (Proof Key for Code Exchange)
+- Session persistence is enabled
+
 ### Visual Design
 
 - **Typography**
