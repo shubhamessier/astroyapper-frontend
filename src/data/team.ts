@@ -4,6 +4,7 @@ export interface TeamMember {
   bio: string;
   avatarUrl: string;
   avatarFallback: string;
+  linkedinUrl: string; // Added LinkedIn URL
 }
 
 export const team: TeamMember[] = [
@@ -13,6 +14,7 @@ export const team: TeamMember[] = [
     bio: "Professional Yapper with a knack for astrology and charts. Firmly believes his hair is on a secret mission to make a mircalous comeback. Stay Tuned!",
     avatarUrl: "https://i.ibb.co/CWWTwSB/white-boy-with-black-curls-hair.png",
     avatarFallback: "Somesh Tangde",
+    linkedinUrl: "https://www.linkedin.com/in/someshtangde07/",
   },
   {
     name: "Shubham",
@@ -21,6 +23,7 @@ export const team: TeamMember[] = [
     avatarUrl:
       "https://i.ibb.co/5KdJg9Q/white-boy-black-hair-black-hoodie-with-glasses.png",
     avatarFallback: "Shubham Gaur",
+    linkedinUrl: "https://www.linkedin.com/in/shubhamgaur10",
   },
   {
     name: "Akshata",
@@ -28,9 +31,6 @@ export const team: TeamMember[] = [
     bio: "Code Ninja with a cosmic twist. Believes in astrology, yaps to her friends like it's her full time job and swears to star gods for her debugging skills.",
     avatarUrl: "https://i.ibb.co/1zr2yKx/akshata.jpg",
     avatarFallback: "Akshata",
+    linkedinUrl: "https://www.linkedin.com/in/akshata-shinde1718/",
   },
 ];
-
-// <a href="https://ibb.co/8XXSmQM"><img src="https://i.ibb.co/CWWTwSB/white-boy-with-black-curls-hair.png" alt="white-boy-with-black-curls-hair" border="0"></a>
-// <a href="https://ibb.co/Rj1JkSX"><img src="https://i.ibb.co/5KdJg9Q/white-boy-black-hair-black-hoodie-with-glasses.png" alt="white-boy-black-hair-black-hoodie-with-glasses" border="0"></a>
-// <a href="https://ibb.co/SftvY0p"><img src="https://i.ibb.co/1zr2yKx/akshata.jpg" alt="akshata" border="0"></a>

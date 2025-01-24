@@ -7,12 +7,14 @@ export function About() {
     {
       icon: Star,
       title: "Authenticity",
-      description: "We honor the ancient traditions while embracing modern interpretations.",
+      description:
+        "We honor the ancient traditions while embracing modern interpretations.",
     },
     {
       icon: Heart,
       title: "Inclusivity",
-      description: "Astrology is for everyone, regardless of background or experience.",
+      description:
+        "Astrology is for everyone, regardless of background or experience.",
     },
     {
       icon: Compass,
@@ -22,12 +24,14 @@ export function About() {
     {
       icon: Moon,
       title: "Growth",
-      description: "We support your journey of personal development and self-discovery.",
+      description:
+        "We support your journey of personal development and self-discovery.",
     },
   ];
 
   // Calculate the grid columns based on team size
-  const gridCols = team.length <= 3 ? team.length : Math.min(3, Math.ceil(team.length / 2));
+  const gridCols =
+    team.length <= 3 ? team.length : Math.min(3, Math.ceil(team.length / 2));
 
   return (
     <div className="space-y-24">
@@ -39,13 +43,14 @@ export function About() {
         <div className="space-y-6 text-lg text-gray-600 leading-relaxed bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-rose-100 shadow-sm">
           <p>
             AstroYapper was born from a desire to make astrology more accessible
-            and meaningful in our daily lives. We believe that the ancient wisdom
-            of the stars can provide guidance and insight in our modern world.
+            and meaningful in our daily lives. We believe that the ancient
+            wisdom of the stars can provide guidance and insight in our modern
+            world.
           </p>
           <p>
             Our mission is to bridge the gap between traditional astrological
-            knowledge and contemporary life, creating a space where cosmic wisdom
-            meets modern technology.
+            knowledge and contemporary life, creating a space where cosmic
+            wisdom meets modern technology.
           </p>
         </div>
       </section>
@@ -67,7 +72,9 @@ export function About() {
                   {value.title}
                 </h3>
               </div>
-              <p className="text-gray-600 leading-relaxed">{value.description}</p>
+              <p className="text-gray-600 leading-relaxed">
+                {value.description}
+              </p>
             </div>
           ))}
         </div>
@@ -81,19 +88,11 @@ export function About() {
         <div className="space-y-12">
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-rose-100 shadow-sm">
             <p className="text-lg text-gray-600 leading-relaxed mb-12">
-              We're a diverse group of astrologers, designers, and developers
-              united by our passion for cosmic wisdom and technological
-              innovation.
+              We're a group of developers, builders, and misfits trying to make
+              astronomy reliable and easy for all.
             </p>
 
-            <div 
-              className="grid gap-8"
-              style={{
-                gridTemplateColumns: `repeat(${gridCols}, minmax(0, 1fr))`,
-                maxWidth: `${gridCols * 300}px`,
-                margin: '0 auto'
-              }}
-            >
+            <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
               {team.map((member) => (
                 <TeamMember key={member.name} member={member} />
               ))}

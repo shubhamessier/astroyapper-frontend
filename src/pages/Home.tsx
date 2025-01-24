@@ -80,7 +80,7 @@ export function Home() {
       <section className="text-center space-y-20">
         <div className="space-y-6">
           <h1 className="font-sans text-5xl sm:text-6xl md:text-7xl text-gray-900 leading-[1.1] tracking-[-0.05em]">
-            Your Personal Guide to the Cosmos
+            Astrology, Made Personal.
           </h1>
           <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
             Discover your astrological path and insights, tailored just for you.
@@ -91,17 +91,22 @@ export function Home() {
         <div className="max-w-xl mx-auto">
           <form
             onSubmit={handleSubmit}
-            className="flex flex-col sm:flex-row gap-3"
+            className="flex flex-col sm:flex-row gap-3 w-full" // Added w-full to form
           >
             <input
               type="email"
               placeholder="Enter your email here."
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="flex-1 px-6 h-14 rounded-full border border-rose-200 bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-rose-200 focus:border-transparent text-lg shadow-md"
+              className="flex-1 h-14 rounded-full border border-rose-200 bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-rose-200 focus:border-transparent text-lg shadow-md min-w-0
+        px-4 sm:px-6 py-2 sm:py-0 
+        m-0 sm:mr-3 
+        "
               required
             />
-            <Button type="submit" size="lg" className="h-14">
+            <Button type="submit" size="lg" className="h-14 w-full sm:w-auto">
+              {" "}
+              {/* Added w-full for smaller screens */}
               Join Waitlist
               <ChevronRight className="ml-2 h-5 w-5" />
             </Button>
