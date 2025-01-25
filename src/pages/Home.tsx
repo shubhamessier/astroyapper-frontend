@@ -98,13 +98,13 @@ export function Home() {
               placeholder="Enter your email here."
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="flex-1 h-14 rounded-full border border-rose-200 bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-rose-200 focus:border-transparent text-lg shadow-md min-w-0
+              className="flex-1 h-14 rounded-full border border-purple-200 bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-purple-200 focus:border-transparent text-lg shadow-md min-w-0
         px-4 sm:px-6 py-2 sm:py-0 
         m-0 sm:mr-3 
         "
               required
             />
-            <Button type="submit" size="lg" className="h-14 w-full sm:w-auto">
+            <Button type="submit" size="lg" className="h-14 w-full sm:w-auto bg-purple-900">
               {" "}
               {/* Added w-full for smaller screens */}
               Join Waitlist
@@ -112,7 +112,7 @@ export function Home() {
             </Button>
           </form>
           {error && (
-            <p className="text-rose-600 mt-4 text-center text-base bg-rose-50 py-2 px-4 rounded-full">
+            <p className="text-purple-600 mt-4 text-center text-base bg-purple-50 py-2 px-4 rounded-full">
               {error}
             </p>
           )}

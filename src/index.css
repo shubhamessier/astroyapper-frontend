@@ -46,6 +46,7 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: rgb(177, 143, 208);
   }
 
   h1 {
@@ -67,7 +68,7 @@
   }
 
   ::selection {
-    background: rgba(251, 207, 232, 0.4);
+    background: rgba(214, 36, 137, 0.4);
     color: #111827;
   }
 }
