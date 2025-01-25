@@ -17,7 +17,7 @@ export function Header({
   title = "AstroYapper",
 }: HeaderProps) {
   return (
-    <header className="fixed w-full bg-white/95 backdrop-blur-sm z-50 border-b border-rose-100 shadow-sm">
+    <header className="fixed w-full bg-purple-200/95 backdrop-blur-sm z-50  shadow-xl ">
       <div className="container max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
