@@ -28,7 +28,7 @@
 
   @font-face {
     font-family: "PP Editorial New";
-    src: url("../assets/fonts/PPEditorialNew-Italic-BF644b214fb0c0a.otf")
+    src: url("../src/assets/fonts/PPEditorialNew-Italic-BF644b214fb0c0a.otf")
       format("opentype");
     font-weight: 200;
     font-style: normal;
@@ -70,4 +70,32 @@
     background: rgba(251, 207, 232, 0.4);
     color: #111827;
   }
+}
+
+/* Ant Design TimePicker Customization */
+.ant-picker {
+  background: transparent !important;
+  border-color: rgb(254 205 211) !important;
+}
+
+.ant-picker:hover {
+  border-color: rgb(251 207 232) !important;
+}
+
+.ant-picker-focused {
+  border-color: rgb(251 207 232) !important;
+  box-shadow: 0 0 0 2px rgba(251, 207, 232, 0.2) !important;
+}
+
+.ant-picker-panel {
+  border-radius: 1rem !important;
+}
+
+.ant-picker-time-panel-column > li.ant-picker-time-panel-cell .ant-picker-time-panel-cell-inner:hover {
+  background: rgb(254 205 211 / 0.1) !important;
+}
+
+.ant-picker-time-panel-column > li.ant-picker-time-panel-cell-selected .ant-picker-time-panel-cell-inner {
+  background: rgb(254 205 211 / 0.2) !important;
+  color: rgb(225 29 72) !important;
 }
