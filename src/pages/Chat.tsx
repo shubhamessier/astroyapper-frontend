@@ -3,8 +3,11 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Spinner } from "@/components/Spinner";
 import { Send } from "lucide-react";
+<<<<<<< HEAD
 import { getAstrologicalResponse } from "@/lib/openai";
 import { isAstrologyQuestion } from "@/lib/prompt";
+=======
+>>>>>>> 014195706707ee54709a7f8c4a7635a4a027af69
 
 interface Message {
   id: string;
@@ -13,17 +16,25 @@ interface Message {
   timestamp: Date;
 }
 
+<<<<<<< HEAD
 let messageCounter = 0;
 const generateMessageId = (prefix: string) => `${prefix}-${Date.now()}-${messageCounter++}`;
 
+=======
+>>>>>>> 014195706707ee54709a7f8c4a7635a4a027af69
 export function Chat() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputText, setInputText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+<<<<<<< HEAD
   const [timeRemaining, setTimeRemaining] = useState<number | null>(null);
   const [hasStarted, setHasStarted] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const timerRef = useRef<NodeJS.Timeout>();
+=======
+  const [freeMessages, setFreeMessages] = useState(3);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+>>>>>>> 014195706707ee54709a7f8c4a7635a4a027af69
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -33,6 +44,7 @@ export function Chat() {
     scrollToBottom();
   }, [messages]);
 
+<<<<<<< HEAD
   useEffect(() => {
     return () => {
       if (timerRef.current) {
@@ -75,19 +87,43 @@ export function Chat() {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${mins}:${secs.toString().padStart(2, '0')}`;
+=======
+  const simulateAIResponse = async (userMessage: string) => {
+    setIsLoading(true);
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+    
+    const aiMessage: Message = {
+      id: Date.now().toString(),
+      text: `Here's a simulated response to: "${userMessage}"`,
+      sender: "ai",
+      timestamp: new Date(),
+    };
+    
+    setMessages(prev => [...prev, aiMessage]);
+    setIsLoading(false);
+    setFreeMessages(prev => Math.max(0, prev - 1));
+>>>>>>> 014195706707ee54709a7f8c4a7635a4a027af69
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+<<<<<<< HEAD
     if (!inputText.trim() || isLoading || (timeRemaining !== null && timeRemaining <= 0)) return;
 
     const userMessage: Message = {
       id: generateMessageId('user'),
+=======
+    if (!inputText.trim() || isLoading || freeMessages === 0) return;
+
+    const userMessage: Message = {
+      id: Date.now().toString(),
+>>>>>>> 014195706707ee54709a7f8c4a7635a4a027af69
       text: inputText.trim(),
       sender: "user",
       timestamp: new Date(),
     };
 
+<<<<<<< HEAD
     if (!hasStarted) {
       startTimer();
     }
@@ -124,11 +160,20 @@ export function Chat() {
     } finally {
       setIsLoading(false);
     }
+=======
+    setMessages(prev => [...prev, userMessage]);
+    setInputText("");
+    await simulateAIResponse(userMessage.text);
+>>>>>>> 014195706707ee54709a7f8c4a7635a4a027af69
   };
 
   return (
     <div className="flex flex-col h-[calc(100vh-8rem)]">
       <div className="flex-1 w-full max-w-3xl mx-auto bg-white/80 backdrop-blur-sm rounded-2xl border border-rose-100 shadow-sm overflow-hidden flex flex-col">
+<<<<<<< HEAD
+=======
+        {/* Messages Container */}
+>>>>>>> 014195706707ee54709a7f8c4a7635a4a027af69
         <div className="flex-1 overflow-y-auto p-4 space-y-4">
           {messages.length === 0 && (
             <div className="flex items-center justify-center h-full">
@@ -138,7 +183,11 @@ export function Chat() {
                   <AvatarFallback>AB</AvatarFallback>
                 </Avatar>
                 <div className="text-gray-500">
+<<<<<<< HEAD
                   Ask me anything about astrology, your zodiac sign, or celestial matters...
+=======
+                  Ask me anything about your astrological journey...
+>>>>>>> 014195706707ee54709a7f8c4a7635a4a027af69
                 </div>
               </div>
             </div>
@@ -181,6 +230,10 @@ export function Chat() {
           <div ref={messagesEndRef} />
         </div>
 
+<<<<<<< HEAD
+=======
+        {/* Input Container */}
+>>>>>>> 014195706707ee54709a7f8c4a7635a4a027af69
         <div className="border-t border-rose-100 p-4 bg-white/50">
           <form onSubmit={handleSubmit} className="space-y-2">
             <div className="flex gap-2">
@@ -188,14 +241,23 @@ export function Chat() {
                 type="text"
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
+<<<<<<< HEAD
                 placeholder="Ask about astrology..."
                 disabled={isLoading || (timeRemaining !== null && timeRemaining <= 0)}
+=======
+                placeholder="Type your message..."
+                disabled={isLoading || freeMessages === 0}
+>>>>>>> 014195706707ee54709a7f8c4a7635a4a027af69
                 className="flex-1 h-12 rounded-full border border-rose-200 bg-white/80 backdrop-blur-sm px-4 focus:outline-none focus:ring-2 focus:ring-rose-200 focus:border-transparent disabled:opacity-50"
               />
               <Button
                 type="submit"
                 size="lg"
+<<<<<<< HEAD
                 disabled={!inputText.trim() || isLoading || (timeRemaining !== null && timeRemaining <= 0)}
+=======
+                disabled={!inputText.trim() || isLoading || freeMessages === 0}
+>>>>>>> 014195706707ee54709a7f8c4a7635a4a027af69
                 className="h-12 w-12 p-0 flex items-center justify-center"
               >
                 {isLoading ? (
@@ -205,6 +267,7 @@ export function Chat() {
                 )}
               </Button>
             </div>
+<<<<<<< HEAD
             {timeRemaining !== null && (
               <div className="flex justify-between items-center px-2 text-sm">
                 {timeRemaining > 0 ? (
@@ -219,6 +282,18 @@ export function Chat() {
                 )}
               </div>
             )}
+=======
+            <div className="flex justify-between items-center px-2 text-sm">
+              <span className="text-[#e74c3c]">
+                {freeMessages} free messages remaining
+              </span>
+              {freeMessages === 0 && (
+                <Button variant="ghost" size="sm" className="text-rose-500">
+                  Upgrade for unlimited
+                </Button>
+              )}
+            </div>
+>>>>>>> 014195706707ee54709a7f8c4a7635a4a027af69
           </form>
         </div>
       </div>

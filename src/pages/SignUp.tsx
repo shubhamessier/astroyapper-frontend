@@ -2,8 +2,11 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/lib/supabase";
 import { Spinner } from "@/components/Spinner";
+<<<<<<< HEAD
 import { TimePicker } from "antd";
 import dayjs from "dayjs";
+=======
+>>>>>>> 014195706707ee54709a7f8c4a7635a4a027af69
 
 interface ProfileData {
   fullName: string;
@@ -21,7 +24,11 @@ export function SignUp() {
   const [profileData, setProfileData] = useState<ProfileData>({
     fullName: "",
     dateOfBirth: "",
+<<<<<<< HEAD
     timeOfBirth: "12:00",
+=======
+    timeOfBirth: "",
+>>>>>>> 014195706707ee54709a7f8c4a7635a4a027af69
     timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
     placeOfBirth: "",
     gender: "",
@@ -55,6 +62,7 @@ export function SignUp() {
     e.preventDefault();
     try {
       setIsLoading(true);
+<<<<<<< HEAD
       
       // Get the current user
       const { data: { user }, error: userError } = await supabase.auth.getUser();
@@ -102,6 +110,24 @@ export function SignUp() {
     } catch (error) {
       console.error('Profile update error:', error);
       alert('Failed to create profile. Please try again.');
+=======
+      const { data: { user } } = await supabase.auth.getUser();
+      
+      if (!user) throw new Error('No user found');
+
+      const { error } = await supabase
+        .from('profiles')
+        .upsert({
+          id: user.id,
+          ...profileData,
+          updated_at: new Date().toISOString(),
+        });
+
+      if (error) throw error;
+      // Redirect to home or dashboard
+    } catch (error) {
+      console.error('Profile update error:', error);
+>>>>>>> 014195706707ee54709a7f8c4a7635a4a027af69
     } finally {
       setIsLoading(false);
     }
@@ -214,6 +240,7 @@ export function SignUp() {
 
             <div className="space-y-4">
               <label className="block text-sm font-medium text-gray-700">Time of Birth</label>
+<<<<<<< HEAD
               <TimePicker
                 use12Hours
                 format="h:mm A"
@@ -231,6 +258,14 @@ export function SignUp() {
                 minuteStep={1}
                 showNow={false}
                 allowClear={false}
+=======
+              <input
+                type="time"
+                required
+                value={profileData.timeOfBirth}
+                onChange={(e) => setProfileData(prev => ({ ...prev, timeOfBirth: e.target.value }))}
+                className="w-full h-12 rounded-full border border-rose-200 bg-white/80 px-4 focus:outline-none focus:ring-2 focus:ring-rose-200 focus:border-transparent"
+>>>>>>> 014195706707ee54709a7f8c4a7635a4a027af69
               />
             </div>
 
